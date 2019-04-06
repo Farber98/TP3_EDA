@@ -12,28 +12,60 @@ import javax.swing.JOptionPane;
  * @author juan
  */
 public class Principal {
+    
+     public static int invertir(int numero)
+    {
+        if(numero<10)
+        {
+            return numero;
+        }
+        else
+        {
+            numero = numero % 10;
+            invertir(numero/10);
+        }
+        return numero;
+    }
+    
+    public static int cantidadDigitos(int numero)
+    {
+        if(numero<10)
+            return 1;
+        else
+        {
+            return 1+ cantidadDigitos(numero/10);
+        }
+    }
+    
+    public static int inverso(int numero)
+    {
+        if(numero<10)
+            return numero;
+        else
+        return( (numero%10) * 10^(cantidadDigitos(numero)-1) + inverso(numero/10) );
+    }
     public static void main(String[] args) 
     {
-        int opcion = 0, numero, numeroInvertido;
+        int opcion = 0, numero1,numero2, numeroInvertido1,numeroInvertido2;
         
         do{
             try
             {
                 opcion = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Escribir inverso.\n"
-                        + "2. El otro."
+                        + "2. El otro.\n"
                         + "3. Salir.",
                          "Menu de opciones", 3));
                switch(opcion)
                {
                    case 1: 
-                       numero = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresar numero a invertir.", "Escribir inverso."));
-                       numeroInvertido = invertir(numero);
-                       JOptionPane.showMessageDialog(null, "El numero es invertido es: " + numeroInvertido, "Numero invertido", JOptionPane.INFORMATION_MESSAGE);
+                       numero1 = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresar numero a invertir.", "Escribir inverso."));
+                       numeroInvertido1 = invertir(numero1);
+                       JOptionPane.showMessageDialog(null, "El numero es invertido es: " + numeroInvertido1, "Numero invertido", JOptionPane.INFORMATION_MESSAGE);
                       
                    case 2:
-                       numero = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresar numero a realizar x accion", "Escribir x accion."));
-                       numeroInvertido = inverso(numero);
-                       JOptionPane.showMessageDialog(null, "El numero es: " + numeroInvertido, "Numero invertido", JOptionPane.INFORMATION_MESSAGE);
+                       numero2 = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresar numero a realizar x accion", "Escribir x accion."));
+                       numeroInvertido2 = inverso(numero2);
+                       JOptionPane.showMessageDialog(null, "El numero es: " + numeroInvertido2, "Numero invertido", JOptionPane.INFORMATION_MESSAGE);
                    case 3:
                        break;
                    default:
